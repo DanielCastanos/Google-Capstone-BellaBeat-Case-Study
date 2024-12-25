@@ -29,17 +29,17 @@ Stakeholders
 ## 2. Prepare 
 - **Data Source:** [Fitbit Fitness Tracker Data](https://www.kaggle.com/arashnic/fitbit)
 The Data set has 11 CSV files. and follows the ROCCC standard for Data:
-## Reliability: 
+**Reliability:** 
  -The dataset comprises information from 30 FitBit users who voluntarily provided their personal tracker data, collected through a survey conducted via Amazon Mechanical Turk.
-## Originality: 
+**Originality:** 
  -The data originates from contributions made directly by the 30 FitBit users, facilitated through Amazon Mechanical Turk.
-## Comprehensiveness: 
+**Comprehensiveness:**
  -The dataset includes minute-level details on physical activity, heart rate, and sleep patterns. However, the sample size is limited and may not represent broader usage trends.
-## Currency: 
+**Currency:**
 The data spans March 2016 to May 2016. As a result, it may not accurately reflect current user habits or behavior.
-## Citation: 
+**Citation:** 
  -The source of the dataset is from **https://www.kaggle.com/arashnic/fitbit**
-## Data Limitations
+**Data Limitations:**
 The available data consists of only 30 users.
 some users did not consistently record data for both daily activity and sleep.
 For the 8 weight records, 5 users manually entered their weight, while 3 used a connected WiFi device for tracking.
