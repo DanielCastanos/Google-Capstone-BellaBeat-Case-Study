@@ -38,8 +38,7 @@ The Data set has 11 CSV files. and follows the ROCCC standard for Data:
 ## Currency: 
 The data spans March 2016 to May 2016. As a result, it may not accurately reflect current user habits or behavior.
 ## Citation: 
- -The source of the dataset is not explicitly cited.
- The dataset has several limitations:
+ -The source of the dataset is from **https://www.kaggle.com/arashnic/fitbit**
 ## Data Limitations
 The available data consists of only 30 users.
 some users did not consistently record data for both daily activity and sleep.
