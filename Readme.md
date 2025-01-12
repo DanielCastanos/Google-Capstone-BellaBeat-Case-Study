@@ -55,7 +55,8 @@ Checked for Duplicate and Missing Data: The dataset was scanned for duplicate en
 ******************** R Code *******************
 
 ## Analyze
-We looked at users Daily Activity and searched for users that met a 10k step goal, then we corralated those with Steps with Light Activity, Moderate Activity & Very Active Intensity
+We set up a Goal of 10k steps to understand the difference between Light, Moderate & Intense activity
+
 **Key Findings:**
 
 Step Goal Achievement:
@@ -68,7 +69,31 @@ Moderate Activity: Users logged an average of 10,269 steps, surpassing the step 
 Very Active Intensity: Users logged an average of 10,480 steps, also exceeding the step goal.
 Insight: Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal.
 ******************************** R Code *****************************************
-We are looking for the key differences from light activity to moderate since is the one that gives the biggest shift in average steps taken & also want to know the correlation with weight loss
+We are looking for the key differences from light activity to moderate since is the one that gives the biggest shift in average steps taken
+************************************ R Code *************************************
+Insights:
+Overall Average Difference:
 
+The average difference in distance covered between light and moderate activity across users is approximately -2.4 km. This indicates that users typically engage in significantly less moderate activity compared to light activity.
+f
+Steps Per Minute:
 
+Light Activity: About 40 steps per minute on average.
+Moderate Activity: A much higher rate of 856 steps per minute on average.
+
+Time Spent:
+
+Users spend a lot more time in light activity (~203 minutes) than in moderate activity (~23 minutes) on average.
+
+Total Steps:
+
+Total steps are higher for moderate activity (~10,269 steps) than for light activity (~7,657 steps), even though users spend significantly less time on moderate activity. This highlights the efficiency of moderate activity.
+
+Marketing Implications:
+
+Small Adjustments, Big Results: This data strongly supports the idea that shifting a small portion of light activity to moderate activity can yield much greater results in terms of steps taken and, potentially, calories burned or weight lost.
+
+Promoting the Bellabeat Leaf: These findings can be tied to how the Bellabeat Leaf tracker helps users monitor their activity levels and encourages efficient activity patterns for better results.
+
+Our main idea is to showcase to users how a small shift in their daily activity can have a big impact in their overall goals.
 
