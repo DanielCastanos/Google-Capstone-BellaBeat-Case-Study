@@ -67,7 +67,70 @@ We went with R for our Analizys given the size of the data
 ### Converted Datetime: 
 Uploaded CSV to R converted ActivityDate to correct format for handeling.
 Checked for Duplicate and Missing Data: The dataset was scanned for duplicate entries and missing values. No significant issues were identified.
-******************** R Code *******************
+
+```r
+# Checking number of unique participants on each data set
+
+n_distinct(daily_activity$Id)
+
+n_distinct(heartrate_seconds$Id)
+
+n_distinct(hourly_calories$Id)
+
+n_distinct(hourly_intensities$Id)
+
+n_distinct(hourly_steps$Id)
+
+n_distinct(minute_calories$Id)
+
+n_distinct(minute_intensities$Id)
+
+n_distinct(minute_mets$Id)
+
+n_distinct(minute_sleep$Id)
+
+n_distinct(minute_steps$Id)
+
+n_distinct(weight_log$Id)
+
+nrow(daily_activity)
+
+
+# Summary statistics
+
+daily_activity %>%  
+  select(TotalSteps,
+         TotalDistance,
+         SedentaryMinutes) %>%
+  summary()
+
+ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point()
+
+
+# Checking for missing values in each column
+
+colSums(is.na(daily_activity))
+colSums(is.na(heartrate_seconds))
+colSums(is.na(hourly_calories))
+colSums(is.na(hourly_intensities))
+colSums(is.na(hourly_steps))
+colSums(is.na(minute_calories))
+colSums(is.na(minute_intensities))
+colSums(is.na(minute_mets))
+colSums(is.na(minute_sleep))
+colSums(is.na(minute_steps))
+colSums(is.na(weight_log))
+
+
+# Generating summary
+
+summary(daily_activity)
+
+
+# Ensuring ActivityDate is in Date format
+
+daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format="%m/%d/%Y")
+```
 
 ## **4. Analyze**
 We first set up a Goal of 10k steps to understand the difference between Light, Moderate & Intense activity to understand the relationship between them
