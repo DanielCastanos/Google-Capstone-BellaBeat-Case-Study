@@ -1,4 +1,4 @@
-# Google-Capstone-BellaBeat-Case-Study
+### Google-Capstone-BellaBeat-Case-Study
 
 **Author:** Daniel Castaños  
 **Date:** 12/24/2024 
