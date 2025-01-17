@@ -114,13 +114,13 @@ daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format="%m/%
 ```
 
 ## **4. Analyze**
-After aggregating the CSV files by **ID** and transforming the tables to the correct formats, we wanted to understand the difference between **Light, Moderate & Intense activity** in order to show the relationship between them We first **set up a goal of 10k steps** to understand how the different levels of activity perform (according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health). There's some evidence that upping your daily strides can have some surprising benefits, according to a **2022 study** published in [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058). Here are some of them. **Improved Mood and Brain Function, Better Mobility, Healthy Weight Loss, Speedier Recovery)**
+After aggregating the CSV files by **ID** and transforming the tables to the correct formats, we wanted to understand the difference between **Light, Moderate & Intense activity** in order to show the relationship between them We first **set up a goal of 10k steps** to understand how the different levels of activity perform (according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health). There's some evidence that upping your daily strides can have some surprising benefits, according to a 2022 study published in [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058). Here are some of them. Improved Mood and Brain Function, Better Mobility, Healthy Weight Loss, Speedier Recovery)
 
 ### **Key Findings:**
 
 **Step Goal Achievement:**
-Across **457** logged days, users met the 10,000-step goal on **127** days.
-This corresponds to **27.79%** of days, showing that users meet the step goal less than **one-third of the time** and showcasing that Health-conscious individuals are not significantly ahead of non-health-conscious ones, raising the question: **What small shifts can help users achieve their health goals?**
+- Across **457** logged days, users met the 10,000-step goal on **127** days.  
+- This corresponds to **27.79%** of days, showing that users meet the step goal less than **one-third of the time** and showcasing that Health-conscious individuals are not significantly ahead of non-health-conscious ones, raising the question: **What small shifts can help users achieve their health goals?**  
 ```r
 # Defining the step goal
 
@@ -145,11 +145,11 @@ step_goal_stats <- daily_activity %>%
 print(step_goal_stats)
 ```
 
-**Influence of Activity Intensity:**
-- **Light Activity:** Users logged an average of **7,657 steps** on days with **light activity**.
-- **Moderate Activity:** Users logged an average of **10,269 steps**, surpassing the step goal.
-- **Very Active Intensity:** Users logged an average of **10,480 steps**, also exceeding the step goal.
-- **Insight:** Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from light to moderate activity, with the impact of intense activity being almost negligible.
+**Influence of Activity Intensity:**  
+- **Light Activity:** Users logged an average of **7,657 steps** on days with **light activity**.  
+- **Moderate Activity:** Users logged an average of **10,269 steps**, surpassing the step goal.  
+- **Very Active Intensity:** Users logged an average of **10,480 steps**, also exceeding the step goal.  
+- **Insight:** Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from light to moderate activity, with the impact of intense activity being almost negligible.  
 ```r
 # Summarizing average steps by activity intensity
 
@@ -219,32 +219,32 @@ activity_aggregate_fixed <- cbind(light_activity, moderate_activity)
 print(activity_aggregate_fixed)
 ```
 
-### **Insights:**
-**Overall Average Difference:**
+### **Insights:**  
+**Overall Average Difference:**  
 
-The average difference in distance between light and moderate activity across all users is about 2.4 km. This tells us that users typically engage in significantly fewer moderate activity compared to light activity.
+The average difference in distance between light and moderate activity across all users is about 2.4 km. This tells us that users typically engage in significantly fewer moderate activity compared to light activity.  
 
-### **Steps Per Minute:**
+### **Steps Per Minute:**  
 
-**Light Activity:** About **40 steps per minute** on average.
-**Moderate Activity:** A much higher rate of **856 steps per minute** on average.
+**Light Activity:** About **40 steps per minute** on average.  
+**Moderate Activity:** A much higher rate of **856 steps per minute** on average.  
 
-### **Time Spent:**
+### **Time Spent:**  
 
-Users spend a lot more time in light activity **(~203 minutes)** than in moderate activity **(~23 minutes)** on average.
+Users spend a lot more time in light activity **(~203 minutes)** than in moderate activity **(~23 minutes)** on average.  
 
-### **Total Steps:**
+### **Total Steps:**  
 
-Total steps are higher for moderate activity **(~10,269 steps)** than for light activity **(~7,657 steps)**, even though users spend significantly less time on moderate activity. This highlights the efficiency of moderate activity.
+Total steps are higher for moderate activity **(~10,269 steps)** than for light activity **(~7,657 steps)**, even though users spend significantly less time on moderate activity. This highlights the efficiency of moderate activity.  
 
-### **Marketing Implications:**
+### **Marketing Implications:**  
 
-Small Adjustments, Big Results: This data strongly supports the idea that shifting a small portion of light activity to moderate activity can yield much greater results in terms of steps taken and, potentially, calories burned or weight with many more benefits according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health) and the study in 2022 from the [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058).
+Small Adjustments, Big Results: This data strongly supports the idea that shifting a small portion of light activity to moderate activity can yield much greater results in terms of steps taken and, potentially, calories burned or weight with many more benefits according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health) and the study in 2022 from the [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058).  
 
-Promoting the Bellabeat's Leaf: These findings can be tied to how the Bellabeat's Leaf tracker helps users monitor their activity levels and encourages efficient activity patterns for better results.
+Promoting the Bellabeat's Leaf: These findings can be tied to how the Bellabeat's Leaf tracker helps users monitor their activity levels and encourages efficient activity patterns for better results.  
 
-Our main idea is to showcase to users how a small shift in their daily activity can have a big impact on their overall goals. We understand how busy lives can be that is why we chose Bellabeat's Leaf for our primary product, as it is easy to wear daily and a simple vibration can remind our users to engage in some sort of moderate activity in order to boost their step count and in turn their health and since it also ties to Bellabeat's app, users will be able to track and see their progress towards their goals live from their phones.
+Our main idea is to showcase to users how a small shift in their daily activity can have a big impact on their overall goals. We understand how busy lives can be that is why we chose Bellabeat's Leaf for our primary product, as it is easy to wear daily and a simple vibration can remind our users to engage in some sort of moderate activity in order to boost their step count and in turn their health and since it also ties to Bellabeat's app, users will be able to track and see their progress towards their goals live from their phones.  
 
-## **Conclusion:**
-By analyzing Fitbit data, we realized that moderate activity offers the best return on investment for users trying to meet their health goals. These insights show the potential for Bellabeat's Leaf tracker to push user engagement by promoting moderate activity through reminders and app integration. Next steps include A/B testing campaigns to validate these findings and refine marketing strategies.
+## **Conclusion:**  
+By analyzing Fitbit data, we realized that moderate activity offers the best return on investment for users trying to meet their health goals. These insights show the potential for Bellabeat's Leaf tracker to push user engagement by promoting moderate activity through reminders and app integration. Next steps include A/B testing campaigns to validate these findings and refine marketing strategies.  
 
