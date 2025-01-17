@@ -120,7 +120,7 @@ After aggregating the CSV files by ID and transforming the tables to the correct
 
 **Step Goal Achievement:**
 Across **457** logged days, users met the 10,000-step goal on **127** days.
-This corresponds to **27.79%** of days, showing that users meet the step goal less than **one-third of the time** and showcasing that Health-conscious individuals are not significantly ahead of non-health-conscious ones, raising the question: What small shifts can help users achieve their health goals?
+This corresponds to **27.79%** of days, showing that users meet the step goal less than **one-third of the time** and showcasing that Health-conscious individuals are not significantly ahead of non-health-conscious ones, raising the question: **What small shifts can help users achieve their health goals?**
 ```r
 # Defining the step goal
 
@@ -146,10 +146,10 @@ print(step_goal_stats)
 ```
 
 **Influence of Activity Intensity:**
-**Light Activity:** Users logged an average of **7,657 steps** on days with **light activity**.
-**Moderate Activity:** Users logged an average of **10,269 steps**, surpassing the step goal.
-**Very Active Intensity:** Users logged an average of **10,480 steps**, also exceeding the step goal.
-**Insight:** Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from light to moderate activity, with the impact of intense activity being almost negligible.
+-**Light Activity:** Users logged an average of **7,657 steps** on days with **light activity**.
+-**Moderate Activity:** Users logged an average of **10,269 steps**, surpassing the step goal.
+-**Very Active Intensity:** Users logged an average of **10,480 steps**, also exceeding the step goal.
+-**Insight:** Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from light to moderate activity, with the impact of intense activity being almost negligible.
 ```r
 # Summarizing average steps by activity intensity
 
