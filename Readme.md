@@ -5,8 +5,9 @@
 
 ---
 
-## **Overview** 
-This project analyzes trends in FitBit user data and provides recommendations to guide Bellabeat’s marketing strategy.  
+## **Scenario**
+As a junior data analyst on Bellabeat's marketing analytics team, my role is to uncover trends in the Smart Device space and provide High-level recommendations for how these trends can inform Bellabeat's marketing team. My analysis will focus on one of Bellabeat's products in these case. These insights will guide Bellabeat's marketing strategy and be presented to the executive team so they can make Data Driven Decision for future Bellabeats Marketing Campaings.
+we choose **Bellabeats Leaf** (Bellabeat’s classic wellness tracker can be worn as a bracelet, necklace, or clip. The Leaf tracker connects to the Bellabeat app to track activity, sleep, and stress)
 
 ---
 
@@ -14,15 +15,8 @@ This project analyzes trends in FitBit user data and provides recommendations to
 Analyze FitBit data to understand user behavior and create actionable marketing insights. 
 
 ---
-
-## **Scenario**
-As a junior data analyst on Bellabeat's marketing analytics team, my role is to uncover trends in the Smart Device space and provide High-level recommendations for how these trends can inform Bellabeat's marketing team. My analysis will focus on one of Bellabeat's products in these case. These insights will guide Bellabeat's marketing strategy and be presented to the executive team so they can make Data Driven Decision for future Bellabeats Marketing Campaings.
-we choose **Bellabeats Leaf** (Bellabeat’s classic wellness tracker can be worn as a bracelet, necklace, or clip. The Leaf tracker connects to the Bellabeat app to track activity, sleep, and stress)
-
----
-
 ## 1. **Ask**
-Analyze Smart Devices data to uncover trends and help guide the marketing team on their new marketing campaings.
+Taking in consideration that smart device users tend to favor easy to read information specially goals, we are looking to uncover ways to gamify health goals & showcase how with **Bellabeats Leaf** & small changes in daily behavior user can more easily achive their goals, We will analyze Smart Devices data to uncover these trends and help guide the marketing team on new marketing campaings.
 ### Stakeholders
 - **Primary Stakeholders:** Urška Sršen and Sando Mur (Bellabeat Executives).  
 - **Secondary Stakeholders:** Bellabeat Marketing Analytics Team.
@@ -51,22 +45,21 @@ Data Description: 10 CSV Files, The dataset includes detailed data on physical a
 
 ### **Data Integrity Considerations**
 1. **Bias and Representativeness:** 
-The dataset is based on self-reported Fitbit data from a small group (30 users). This may introduce bias, as it reflects a specific subset of the population—people who use fitness trackers. Moreover, this small sample size limits the ability to generalize findings to a broader population.
+The dataset is based on self-reported Fitbit data from a small group (30 users). This may create issues with bias, as it talks about only a specific subset of the population — people who use fitness trackers. Also, is a small sample size which limits the ability to generalize findings.
 2. **Credibility:** 
-While Fitbit data is generally considered reliable, it might not represent all user demographics. Issues like missing data or inconsistencies could exist, but overall, it offers valuable insights into user habits.
+While Fitbit data is considered reliable, it does not represent all users. Issues like missing data or inconsistencies could generate a problem, but it offers valuable insights into the target makets habits.
 
 ### **Privacy and Licensing**
-The dataset is shared under a **CC0 license**, meaning it is free for use, and no personal information is included, ensuring user privacy is protected.
+The dataset is under a **CC0 license**, meaning it is free for use, and no personal information is included, ensuring user privacy.
 
 ---
 
 ## 3. Process
 **Data Cleaning and Processing**
 We went with R for our Analizys given the size of the data
-## To ensure accurate analysis we:
-### Converted Datetime: 
-Uploaded CSV to R converted ActivityDate to correct format for handeling.
-Checked for Duplicate and Missing Data: The dataset was scanned for duplicate entries and missing values. No significant issues were identified.
+## To ensure accurate analysis we: 
+Uploaded the CSV files to R and Checked for Duplicate & Missing Data. No significant issues were identified.
+Also we converted ActivityDate to a correct format for handeling.
 
 ```r
 # Checking number of unique participants on each data set
@@ -96,17 +89,6 @@ n_distinct(weight_log$Id)
 nrow(daily_activity)
 
 
-# Summary statistics
-
-daily_activity %>%  
-  select(TotalSteps,
-         TotalDistance,
-         SedentaryMinutes) %>%
-  summary()
-
-ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point()
-
-
 # Checking for missing values in each column
 
 colSums(is.na(daily_activity))
@@ -133,13 +115,13 @@ daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format="%m/%
 ```
 
 ## **4. Analyze**
-We first set up a Goal of 10k steps to understand the difference between Light, Moderate & Intense activity to understand the relationship between them
+After Agregating the CSV Files by ID & transforming the tables to the correct formats, we wanted to understand the difference between Light, Moderate & Intense activity in order to show the relationship between them so we set up  We first set up a Goal of 10k steps to understand how the different levels of activity perform (according to the National Institutes of Health(https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health). There's some evidence that upping your daily strides can have some surprising benefits, according to a 2022 study published in JAMA Internal Medicine(https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058). Here are some of them. Improved Mood and Brain Function, Better Mobility, Healthy Weight Loss, Speedier Recovery)
 
 ### **Key Findings:**
 
 **Step Goal Achievement:**
 Across 457 logged days, users met the 10,000-step goal on 127 days.
-This corresponds to 27.79% of days, showing that users meet the step goal less than one-third of the time.
+This corresponds to 27.79% of days, showing that users meet the step goal less than one-third of the time and showcasing that health concious individuals are not that far from not Health concious ones this trigger a question what does it take take shift from our daily regular activities to achiving our Health goals 
 ********************************* R code ****************************************
 **Influence of Activity Intensity:**
 Light Activity: Users logged an average of 7,657 steps on days with light activity.
