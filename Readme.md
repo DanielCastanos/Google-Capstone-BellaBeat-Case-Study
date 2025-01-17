@@ -121,20 +121,109 @@ After Agregating the CSV Files by ID & transforming the tables to the correct fo
 
 **Step Goal Achievement:**
 Across 457 logged days, users met the 10,000-step goal on 127 days.
-This corresponds to 27.79% of days, showing that users meet the step goal less than one-third of the time and showcasing that health concious individuals are not that far from not Health concious ones this trigger a question what does it take take shift from our daily regular activities to achiving our Health goals 
-********************************* R code ****************************************
+This corresponds to 27.79% of days, showing that users meet the step goal less than one-third of the time and showcasing that health concious individuals are not that far from not-Health concious ones this trigger a question what dshift from our daily regular activities does it really take to achiving our Health goals 
+```r
+# Defining the step goal
+
+step_goal <- 10000
+
+
+# Adding a column indicating whether the step goal was met
+
+daily_activity <- daily_activity %>%
+  mutate(StepGoalMet = ifelse(TotalSteps >= step_goal, 1, 0))
+
+
+# Calculating percentage of days users met the step goal
+
+step_goal_stats <- daily_activity %>%
+  summarise(
+    TotalDays = n(),
+    GoalMetDays = sum(StepGoalMet),
+    PercentGoalMet = (GoalMetDays / TotalDays) * 100
+  )
+
+print(step_goal_stats)
+```
+
 **Influence of Activity Intensity:**
 Light Activity: Users logged an average of 7,657 steps on days with light activity.
 Moderate Activity: Users logged an average of 10,269 steps, surpassing the step goal.
 Very Active Intensity: Users logged an average of 10,480 steps, also exceeding the step goal.
-Insight: Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal.
-******************************** R Code *****************************************
-We are looking for the key differences from light activity to moderate since is the one that gives the biggest shift in average steps taken
-************************************ R Code *************************************
+Insight: Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from Light to Moderate with Intense being almost neglatable.
+```r
+# Summarizing average steps by activity intensity
+
+intensity_analysis <- daily_activity %>%
+  summarise(
+    AvgSteps_Light = mean(TotalSteps[LightActiveDistance > 0]),
+    AvgSteps_Moderate = mean(TotalSteps[ModeratelyActiveDistance > 0]),
+    AvgSteps_VeryActive = mean(TotalSteps[VeryActiveDistance > 0])
+  )
+
+print(intensity_analysis)
+```
+
+So we are looking for the key differences from light activity to moderate since is the one that gives the biggest shift in average steps taken
+```r
+# Calculating average LightActiveDistance and ModeratelyActiveDistance per user
+
+average_activity_difference <- daily_activity %>%
+  group_by(Id) %>%
+  summarise(
+    AvgLightActivity = mean(LightActiveDistance, na.rm = TRUE),
+    AvgModerateActivity = mean(ModeratelyActiveDistance, na.rm = TRUE)
+  ) %>%
+  mutate(Difference = AvgModerateActivity - AvgLightActivity)
+
+
+# Viewing the calculated differences
+
+print(average_activity_difference)
+
+
+# Calculating the overall average difference across all users
+
+overall_difference <- mean(average_activity_difference$Difference, na.rm = TRUE)
+print(paste("Overall Average Difference:", overall_difference))
+
+
+# Aggregate data for light activity
+
+light_activity <- daily_activity %>%
+  filter(LightActiveDistance > 0, LightlyActiveMinutes > 0) %>%
+  summarise(
+    AvgLightStepsPerMinute = mean(TotalSteps / LightlyActiveMinutes, na.rm = TRUE),
+    AvgLightMinutes = mean(LightlyActiveMinutes, na.rm = TRUE),
+    AvgLightSteps = mean(TotalSteps, na.rm = TRUE)
+  )
+
+
+# Aggregate data for moderate activity
+
+moderate_activity <- daily_activity %>%
+  filter(ModeratelyActiveDistance > 0, FairlyActiveMinutes > 0) %>%
+  summarise(
+    AvgModerateStepsPerMinute = mean(TotalSteps / FairlyActiveMinutes, na.rm = TRUE),
+    AvgModerateMinutes = mean(FairlyActiveMinutes, na.rm = TRUE),
+    AvgModerateSteps = mean(TotalSteps, na.rm = TRUE)
+  )
+
+
+# Combine the results into a single table for easier comparison
+
+activity_aggregate_fixed <- cbind(light_activity, moderate_activity)
+
+
+# Print the updated aggregated data
+
+print(activity_aggregate_fixed)
+```
+
 ### **Insights:**
 **Overall Average Difference:**
 
-The average difference in distance covered between light and moderate activity across users is approximately -2.4 km. This indicates that users typically engage in significantly less moderate activity compared to light activity.
+The average difference in distance between light and moderate activity across all users is about -2.4 km. This tells us that users typically engage in significantly less moderate activity compared to light activity.
 
 ### **Steps Per Minute:**
 
@@ -151,11 +240,11 @@ Total steps are higher for moderate activity (~10,269 steps) than for light acti
 
 ### **Marketing Implications:**
 
-Small Adjustments, Big Results: This data strongly supports the idea that shifting a small portion of light activity to moderate activity can yield much greater results in terms of steps taken and, potentially, calories burned or weight lost.
+Small Adjustments, Big Results: This data strongly supports the idea that shifting a small portion of light activity to moderate activity can yield much greater results in terms of steps taken and, potentially, calories burned or weight with many more benefits as per the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health) and the study in 2022 from the [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058).
 
 Promoting the Bellabeat Leaf: These findings can be tied to how the Bellabeat Leaf tracker helps users monitor their activity levels and encourages efficient activity patterns for better results.
 
-Our main idea is to showcase to users how a small shift in their daily activity can have a big impact in their overall goals.
+Our main idea is to showcase to users how a small shift in their daily activity can have a big impact in their overall goals, now we know how busy our lifes are that is why we chose Bellabeats Leaf for our primary product since is easy to wear daily and a simple vibration can remind our users to engage in some sort of moderate activity in order to boost their step count and in turn their health and since it alse ties to Bellabeats app users will be able to track and see their progress towards their goals life from their phones.
 
 
 
