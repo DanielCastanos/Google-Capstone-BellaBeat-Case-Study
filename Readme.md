@@ -146,10 +146,10 @@ print(step_goal_stats)
 ```
 
 **Influence of Activity Intensity:**
--**Light Activity:** Users logged an average of **7,657 steps** on days with **light activity**.
--**Moderate Activity:** Users logged an average of **10,269 steps**, surpassing the step goal.
--**Very Active Intensity:** Users logged an average of **10,480 steps**, also exceeding the step goal.
--**Insight:** Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from light to moderate activity, with the impact of intense activity being almost negligible.
+- **Light Activity:** Users logged an average of **7,657 steps** on days with **light activity**.
+- **Moderate Activity:** Users logged an average of **10,269 steps**, surpassing the step goal.
+- **Very Active Intensity:** Users logged an average of **10,480 steps**, also exceeding the step goal.
+- **Insight:** Higher activity intensities (moderate and very active) are strongly associated with meeting or exceeding the daily step goal but if we see the biggest jump is from light to moderate activity, with the impact of intense activity being almost negligible.
 ```r
 # Summarizing average steps by activity intensity
 
