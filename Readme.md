@@ -58,7 +58,7 @@ The dataset is under a **CC0 license**, meaning it is free for use, and no perso
 **Data Cleaning and Processing**
 We used R for our analysis due to the size of the data
 ## To ensure accurate analysis, we:
-uploaded the CSV files to R and checked for duplicate and missing data. No significant issues were identified. Additionally, we converted `ActivityDate` to the correct format for handling.
+Uploaded the CSV files to R and checked for duplicate and missing data. No significant issues were identified. Additionally, we converted `ActivityDate` to the correct format for handling.
 
 ```r
 # Checking number of unique participants on each data set
