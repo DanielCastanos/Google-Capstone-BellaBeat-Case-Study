@@ -219,8 +219,8 @@ activity_aggregate_fixed <- cbind(light_activity, moderate_activity)
 print(activity_aggregate_fixed)
 ```
 
-### **Insights:**  
-**Overall Average Difference:**  
+## **Insights:**  
+###**Overall Average Difference:**  
 
 The average difference in distance between light and moderate activity across all users is about 2.4 km. This tells us that users typically engage in significantly fewer moderate activity compared to light activity.  
 
@@ -237,7 +237,7 @@ Users spend a lot more time in light activity **(~203 minutes)** than in moderat
 
 Total steps are higher for moderate activity **(~10,269 steps)** than for light activity **(~7,657 steps)**, even though users spend significantly less time on moderate activity. This highlights the efficiency of moderate activity.  
 
-### **Marketing Implications:**  
+## **Marketing Implications:**  
 
 Small Adjustments, Big Results: This data strongly supports the idea that shifting a small portion of light activity to moderate activity can yield much greater results in terms of steps taken and, potentially, calories burned or weight with many more benefits according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health) and the study in 2022 from the [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058).  
 
