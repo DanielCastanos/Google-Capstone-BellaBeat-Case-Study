@@ -16,7 +16,7 @@ Analyze FitBit data to understand user behavior and create actionable marketing 
 
 ---
 ## 1. **Ask**
-Taking into consideration that smart device users tend to favor easy-to-read information specially goals. We are looking to uncover ways to gamify health goals and showcase how with **Bellabeat's Leaf** & easy-to-read information, especially goals. We will analyze Smart Devices data to uncover these trends and help guide the marketing team on new marketing campaigns.
+Taking into consideration that smart device users tend to favor easy to read information specially goals, we are looking to uncover ways to gamify health goals and showcase how with **Bellabeats Leaf** & small changes in daily behavior users can easily achieve their goals. We will analyze Smart Devices data to uncover these trends and help guide the marketing team on new marketing campaigns.
 ### Stakeholders
 - **Primary Stakeholders:** Urška Sršen and Sando Mur (Bellabeat's Executives).  
 - **Secondary Stakeholders:** Bellabeat's Marketing Analytics Team.
