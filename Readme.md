@@ -114,7 +114,7 @@ daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format="%m/%
 ```
 
 ## **4. Analyze**
-After aggregating the CSV files by ID and transforming the tables to the correct formats, we wanted to understand the difference between Light, Moderate & Intense activity in order to show the relationship between them We first set up a goal of **10k steps** to understand how the different levels of activity perform (according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health). There's some evidence that upping your daily strides can have some surprising benefits, according to a 2022 study published in [JAMA Internal Medicine](https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058). Here are some of them. Improved Mood and Brain Function, Better Mobility, Healthy Weight Loss, Speedier Recovery)
+After aggregating the CSV files by **ID** and transforming the tables to the correct formats, we wanted to understand the difference between **Light, Moderate & Intense activity** in order to show the relationship between them We first **set up a goal of 10k steps** to understand how the different levels of activity perform (according to the [National Institutes of Health](https://www.nih.gov/news-events/nih-research-matters/how-many-steps-better-health). There's some evidence that upping your daily strides can have some surprising benefits, according to a **2022 study published in [JAMA Internal Medicine]**(https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2796058). Here are some of them. Improved Mood and Brain Function, Better Mobility, Healthy Weight Loss, Speedier Recovery)
 
 ### **Key Findings:**
 
