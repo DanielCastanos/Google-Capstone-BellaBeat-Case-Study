@@ -227,7 +227,9 @@ The average difference in distance between light and moderate activity across al
 ### **Steps Per Minute:**  
 
 **Light Activity:** About **40 steps per minute** on average.  
-**Moderate Activity:** A much higher rate of **856 steps per minute** on average.  
+**Moderate Activity:** A much higher rate of **856 steps per minute** on average.
+
+![Average Steps Per Minute](Images/averageStepsPerMinute.png)
 
 ### **Time Spent:**  
 
