@@ -233,7 +233,9 @@ The average difference in distance between light and moderate activity across al
 
 ### **Time Spent:**  
 
-Users spend a lot more time in light activity **(~203 minutes)** than in moderate activity **(~23 minutes)** on average.  
+Users spend a lot more time in light activity **(~203 minutes)** than in moderate activity **(~23 minutes)** on average. 
+
+![Average Activity Per Minute](Images/distributionTotalActivity.png)
 
 ### **Total Steps:**  
 
