@@ -1,0 +1,252 @@
+```r
+# Installing Packages
+
+install.packages(c("dplyr", "ggplot2", "tidyr", "here", "janitor", "skimr", "tidyverse"))
+
+
+# Loading Packages
+
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(here)
+library(janitor)
+library(skimr)
+library(tidyverse)
+
+
+# Reading CSV Files
+
+daily_activity <- read.csv("dailyActivity_merged.csv")
+heartrate_seconds <- read.csv("heartrate_seconds_merged.csv")
+hourly_calories <- read.csv("hourlyCalories_merged.csv")
+hourly_intensities <- read.csv("hourlyIntensities_merged.csv")
+hourly_steps <- read.csv("hourlySteps_merged.csv")
+minute_calories <- read.csv("minuteCaloriesNarrow_merged.csv")
+minute_intensities <- read.csv("minuteIntensitiesNarrow_merged.csv")
+minute_mets <- read.csv("minuteMETsNarrow_merged.csv")
+minute_sleep <- read.csv("minuteSleep_merged.csv")
+minute_steps <- read.csv("minuteStepsNarrow_merged.csv")
+weight_log <- read.csv("weightLogInfo_merged.csv")
+
+
+# Inspecting the structure and summary of each dataset
+
+head(daily_activity)
+summary(daily_activity)
+
+head(heartrate_seconds)
+summary(heartrate_seconds)
+
+head(hourly_calories)
+summary(hourly_calories)
+
+head(hourly_intensities)
+summary(hourly_intensities)
+
+head(hourly_steps)
+summary(hourly_steps)
+
+head(minute_calories)
+summary(minute_calories)
+
+head(minute_intensities)
+summary(minute_intensities)
+
+head(minute_mets)
+summary(minute_mets)
+
+head(minute_sleep)
+summary(minute_sleep)
+
+head(minute_steps)
+summary(minute_steps)
+
+head(weight_log)
+summary(weight_log)
+
+
+# Checking number of unique participants on each data set
+
+n_distinct(daily_activity$Id)
+
+n_distinct(heartrate_seconds$Id)
+
+n_distinct(hourly_calories$Id)
+
+n_distinct(hourly_intensities$Id)
+
+n_distinct(hourly_steps$Id)
+
+n_distinct(minute_calories$Id)
+
+n_distinct(minute_intensities$Id)
+
+n_distinct(minute_mets$Id)
+
+n_distinct(minute_sleep$Id)
+
+n_distinct(minute_steps$Id)
+
+n_distinct(weight_log$Id)
+
+nrow(daily_activity)
+
+
+# Summary statistics
+
+daily_activity %>%  
+  select(TotalSteps,
+         TotalDistance,
+         SedentaryMinutes) %>%
+  summary()
+
+ggplot(data=daily_activity, aes(x=TotalSteps, y=SedentaryMinutes)) + geom_point()
+
+
+# Checking for missing values in each column
+
+colSums(is.na(daily_activity))
+colSums(is.na(heartrate_seconds))
+colSums(is.na(hourly_calories))
+colSums(is.na(hourly_intensities))
+colSums(is.na(hourly_steps))
+colSums(is.na(minute_calories))
+colSums(is.na(minute_intensities))
+colSums(is.na(minute_mets))
+colSums(is.na(minute_sleep))
+colSums(is.na(minute_steps))
+colSums(is.na(weight_log))
+
+
+# Generating summary
+
+summary(daily_activity)
+
+
+# Ensuring ActivityDate is in Date format
+
+daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format="%m/%d/%Y")
+
+
+# Defining the step goal
+
+step_goal <- 10000
+
+
+# Adding a column indicating whether the step goal was met
+
+daily_activity <- daily_activity %>%
+  mutate(StepGoalMet = ifelse(TotalSteps >= step_goal, 1, 0))
+
+
+# Calculating percentage of days users met the step goal
+
+step_goal_stats <- daily_activity %>%
+  summarise(
+    TotalDays = n(),
+    GoalMetDays = sum(StepGoalMet),
+    PercentGoalMet = (GoalMetDays / TotalDays) * 100
+  )
+
+print(step_goal_stats)
+
+
+# Summarizing average steps by activity intensity
+
+intensity_analysis <- daily_activity %>%
+  summarise(
+    AvgSteps_Light = mean(TotalSteps[LightActiveDistance > 0]),
+    AvgSteps_Moderate = mean(TotalSteps[ModeratelyActiveDistance > 0]),
+    AvgSteps_VeryActive = mean(TotalSteps[VeryActiveDistance > 0])
+  )
+
+print(intensity_analysis)
+
+
+# Calculating average LightActiveDistance and ModeratelyActiveDistance per user
+
+average_activity_difference <- daily_activity %>%
+  group_by(Id) %>%
+  summarise(
+    AvgLightActivity = mean(LightActiveDistance, na.rm = TRUE),
+    AvgModerateActivity = mean(ModeratelyActiveDistance, na.rm = TRUE)
+  ) %>%
+  mutate(Difference = AvgModerateActivity - AvgLightActivity)
+
+
+# Viewing the calculated differences
+
+print(average_activity_difference)
+
+
+# Calculating the overall average difference across all users
+
+overall_difference <- mean(average_activity_difference$Difference, na.rm = TRUE)
+print(paste("Overall Average Difference:", overall_difference))
+
+
+# Aggregate data for light activity
+
+light_activity <- daily_activity %>%
+  filter(LightActiveDistance > 0, LightlyActiveMinutes > 0) %>%
+  summarise(
+    AvgLightStepsPerMinute = mean(TotalSteps / LightlyActiveMinutes, na.rm = TRUE),
+    AvgLightMinutes = mean(LightlyActiveMinutes, na.rm = TRUE),
+    AvgLightSteps = mean(TotalSteps, na.rm = TRUE)
+  )
+
+
+# Aggregate data for moderate activity
+
+moderate_activity <- daily_activity %>%
+  filter(ModeratelyActiveDistance > 0, FairlyActiveMinutes > 0) %>%
+  summarise(
+    AvgModerateStepsPerMinute = mean(TotalSteps / FairlyActiveMinutes, na.rm = TRUE),
+    AvgModerateMinutes = mean(FairlyActiveMinutes, na.rm = TRUE),
+    AvgModerateSteps = mean(TotalSteps, na.rm = TRUE)
+  )
+
+
+# Combine the results into a single table for easier comparison
+
+activity_aggregate_fixed <- cbind(light_activity, moderate_activity)
+
+
+# Print the updated aggregated data
+
+print(activity_aggregate_fixed)
+
+
+# Create a data frame for the Average comparison between Light and Moderate activity bar chart 
+
+bar_chart_data <- data.frame(
+  ActivityType = c("Light Activity", "Moderate Activity"),
+  AverageStepsPerMinute = c(activity_aggregate_fixed$AvgLightStepsPerMinute, 
+                            activity_aggregate_fixed$AvgModerateStepsPerMinute)
+)
+
+
+# Plot the bar chart
+
+bar_chart <- ggplot(bar_chart_data, aes(x = ActivityType, y = AverageStepsPerMinute, fill = ActivityType)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = c("Light Activity" = "skyblue", "Moderate Activity" = "orange")) +
+  labs(title = "Average Steps per Minute: Light vs. Moderate Activity",
+       x = "Activity Type", y = "Average Steps per Minute") +
+  theme_minimal()
+print(bar_chart)
+
+
+# 2. Pie Chart: Distribution of Total Activity Minutes
+
+total_minutes <- c(sum(daily_activity$LightlyActiveMinutes, na.rm = TRUE),
+                   sum(daily_activity$FairlyActiveMinutes, na.rm = TRUE))
+activity_labels <- c("Light Activity", "Moderate Activity")
+pie_chart <- ggplot(data.frame(Activity = activity_labels, Minutes = total_minutes), aes(x = "", y = Minutes, fill = Activity)) +
+  geom_bar(stat = "identity", width = 1) +
+  coord_polar("y") +
+  labs(title = "Distribution of Total Activity Minutes", fill = "Activity Type") +
+  theme_void()
+print(pie_chart)
+```
