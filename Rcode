@@ -1,4 +1,3 @@
-```r
 # Installing Packages
 
 install.packages(c("dplyr", "ggplot2", "tidyr", "here", "janitor", "skimr", "tidyverse"))
@@ -249,4 +248,26 @@ pie_chart <- ggplot(data.frame(Activity = activity_labels, Minutes = total_minut
   labs(title = "Distribution of Total Activity Minutes", fill = "Activity Type") +
   theme_void()
 print(pie_chart)
-```
+
+# Calculate average steps for light and moderate activity
+average_steps <- data.frame(
+  ActivityType = c("Light Activity", "Moderate Activity"),
+  AverageSteps = c(
+    mean(daily_activity$TotalSteps[daily_activity$LightActiveDistance > 0], na.rm = TRUE),
+    mean(daily_activity$TotalSteps[daily_activity$ModeratelyActiveDistance > 0], na.rm = TRUE)
+  )
+)
+
+# Create the bar chart
+bar_chart_avg_steps <- ggplot(average_steps, aes(x = ActivityType, y = AverageSteps, fill = ActivityType)) +
+  geom_bar(stat = "identity", width = 0.6) +
+  scale_fill_manual(values = c("Light Activity" = "skyblue", "Moderate Activity" = "orange")) +
+  labs(
+    title = "Average Steps: Light vs. Moderate Activity",
+    x = "Activity Type",
+    y = "Average Steps"
+  ) +
+  theme_minimal()
+
+# Print the bar chart
+print(bar_chart_avg_steps)
