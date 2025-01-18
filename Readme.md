@@ -237,9 +237,11 @@ Users spend a lot more time in light activity **(~203 minutes)** than in moderat
 
 ![Average Activity Per Minute](Images/distributionTotalActivity.png)
 
-### **Total Steps:**  
+### **Average Steps:**  
 
-Total steps are higher for moderate activity **(~10,269 steps)** than for light activity **(~7,657 steps)**, even though users spend significantly less time on moderate activity. This highlights the efficiency of moderate activity.  
+Average steps are higher for moderate activity **(~10,269 steps)** than for light activity **(~7,657 steps)**, even though users spend significantly less time on moderate activity. This highlights the efficiency of moderate activity.  
+
+![Average Total Steps](Images/averageDailySteps.png)
 
 ## **Marketing Implications:**  
 
